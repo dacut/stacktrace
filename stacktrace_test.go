@@ -98,3 +98,12 @@ func TestPropagateNil(t *testing.T) {
 
 	assert.Equal(t, stacktrace.NoCode, stacktrace.GetCode(err))
 }
+
+func TestUnwrapping(t *testing.T) {
+	root := errors.New("root")
+	wrap1 := stacktrace.Propagate(root, "Wrapped once")
+	wrap2 := stacktrace.Propagate(wrap1, "Wrapped twice")
+
+	assert.True(t, errors.Is(wrap2, wrap1))
+	assert.True(t, errors.Is(wrap2, root))
+}
