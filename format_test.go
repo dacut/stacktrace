@@ -1,4 +1,4 @@
-// Copyright 2016 Palantir Technologies
+// Copyright 2016 dacut Technologies
 //
 // Licensed under the Apache License, Version 2.0 (the "License");
 // you may not use this file except in compliance with the License.
@@ -22,7 +22,7 @@ import (
 
 	"github.com/stretchr/testify/assert"
 
-	"github.com/palantir/stacktrace"
+	"github.com/dacut/stacktrace"
 )
 
 func TestFormat(t *testing.T) {
@@ -40,19 +40,19 @@ func TestFormat(t *testing.T) {
 			format:             stacktrace.FormatFull,
 			specifier:          "%v",
 			expectedPlain:      "plain",
-			expectedStacktrace: "decorated\n --- at github.com/palantir/stacktrace/format_test.go:## (TestFormat) ---\nCaused by: plain",
+			expectedStacktrace: "decorated\n --- at github.com/dacut/stacktrace/format_test.go:## (TestFormat) ---\nCaused by: plain",
 		},
 		{
 			format:             stacktrace.FormatFull,
 			specifier:          "%q",
 			expectedPlain:      "\"plain\"",
-			expectedStacktrace: "\"decorated\\n --- at github.com/palantir/stacktrace/format_test.go:## (TestFormat) ---\\nCaused by: plain\"",
+			expectedStacktrace: "\"decorated\\n --- at github.com/dacut/stacktrace/format_test.go:## (TestFormat) ---\\nCaused by: plain\"",
 		},
 		{
 			format:             stacktrace.FormatFull,
 			specifier:          "%105s",
 			expectedPlain:      "                                                                                                    plain",
-			expectedStacktrace: "     decorated\n --- at github.com/palantir/stacktrace/format_test.go:## (TestFormat) ---\nCaused by: plain",
+			expectedStacktrace: "        decorated\n --- at github.com/dacut/stacktrace/format_test.go:## (TestFormat) ---\nCaused by: plain",
 		},
 		{
 			format:             stacktrace.FormatFull,
@@ -82,7 +82,7 @@ func TestFormat(t *testing.T) {
 			format:             stacktrace.FormatBrief,
 			specifier:          "%+s",
 			expectedPlain:      "plain",
-			expectedStacktrace: "decorated\n --- at github.com/palantir/stacktrace/format_test.go:## (TestFormat) ---\nCaused by: plain",
+			expectedStacktrace: "decorated\n --- at github.com/dacut/stacktrace/format_test.go:## (TestFormat) ---\nCaused by: plain",
 		},
 	} {
 		stacktrace.DefaultFormat = test.format
